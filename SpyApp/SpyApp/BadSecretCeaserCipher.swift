@@ -51,7 +51,7 @@ struct BadSecretCeasarCipther: Cipher {
             else {
                 shiftedUnicode = unicode - (shiftBy * 2)
                 if(shiftedUnicode < 97){
-                    shiftedUnicode = 123 - (97 - shiftedUnicode )
+                    shiftedUnicode = 122 - (97 - shiftedUnicode )
                 }
             }
             
