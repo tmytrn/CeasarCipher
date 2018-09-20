@@ -16,7 +16,7 @@ struct AlphaNumericCeasarCipher: Cipher {
             else{
                 return "Invalid secret value "
         }
-        for character in plaintext {
+        for character in plaintext.lowercased() {
             let unicode = character.unicodeScalars.first!.value
             var shiftedUnicode = unicode
             if(shiftedUnicode == 122){
@@ -41,7 +41,7 @@ struct AlphaNumericCeasarCipher: Cipher {
             else{
                 return "Invalid secret value "
         }
-        for character in plaintext {
+        for character in plaintext.lowercased() {
             let unicode = character.unicodeScalars.first!.value
             var shiftedUnicode = unicode
             if(shiftedUnicode == 97){

@@ -16,11 +16,18 @@ struct BadSecretCeasarCipther: Cipher {
             else{
                 return "Invalid secret value "
         }
-        
-        for character in plaintext {
+        for character in plaintext.lowercased() {
             let unicode = character.unicodeScalars.first!.value
-            let shiftedUnicode = unicode + (shiftBy * 2)
-            
+            var shiftedUnicode = unicode
+            if(unicode == 122){
+                shiftedUnicode = 97 + (shiftBy * 2)
+            }
+            else {
+                shiftedUnicode = unicode + (shiftBy * 2)
+                if(shiftedUnicode > 122){
+                    shiftedUnicode = 97 + (shiftedUnicode - 122)
+                }
+            }
             
             let shiftedCharacter = String(UnicodeScalar(UInt8(shiftedUnicode)))
             encoded = encoded + shiftedCharacter
@@ -35,10 +42,18 @@ struct BadSecretCeasarCipther: Cipher {
                 return "Invalid secret value "
         }
         
-        for character in plaintext {
+        for character in plaintext.lowercased() {
             let unicode = character.unicodeScalars.first!.value
-            let shiftedUnicode = unicode - (shiftBy * 2)
-            
+            var shiftedUnicode = unicode
+            if(unicode == 97){
+                shiftedUnicode = 122 - (shiftBy * 2)
+            }
+            else {
+                shiftedUnicode = unicode - (shiftBy * 2)
+                if(shiftedUnicode < 97){
+                    shiftedUnicode = 123 - (97 - shiftedUnicode )
+                }
+            }
             
             let shiftedCharacter = String(UnicodeScalar(UInt8(shiftedUnicode)))
             decoded = decoded + shiftedCharacter

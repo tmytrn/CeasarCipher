@@ -18,7 +18,7 @@ struct CeaserCipher: Cipher {
                 return "Invalid secret value "
         }
         
-        for character in plaintext {
+        for character in plaintext.lowercased() {
             let unicode = character.unicodeScalars.first!.value
             let shiftedUnicode = unicode + shiftBy
             let shiftedCharacter = String(UnicodeScalar(UInt8(shiftedUnicode)))
@@ -35,7 +35,7 @@ struct CeaserCipher: Cipher {
                 return "Invalid secret value "
         }
         
-        for character in plaintext {
+        for character in plaintext.lowercased() {
             let unicode = character.unicodeScalars.first!.value
             let shiftedUnicode = unicode - shiftBy
             let shiftedCharacter = String(UnicodeScalar(UInt8(shiftedUnicode)))
